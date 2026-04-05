@@ -1,225 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taco</title>
-    <link rel="icon" href="imagenes/icono.jpeg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taco</title>
+<link rel="icon" href="imagenes/icono.jpeg">
 
-    <style>
-        body {
-            margin: 0;
-            text-align: center;
-            color: black;
+<style>
+body {
+    margin: 0;
+    text-align: center;
+    color: black;
+    background-image: url("imagenes/fondo.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
 
-            background-image: url("imagenes/fondo.png");
-            background-size: contain;
-            background-position: center;
-            background-repeat: repeat;
-        }
+    position: relative; /* 🔥 necesario */
+    z-index: 1;
+}
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            z-index: -1;
-        }
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-        .imgSection {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: 1200px; 
-            margin: 40px auto;
-            padding: 20px;
-        }
+    background: rgba(0,0,0,0.2);
 
-        .card {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            padding: 10px;
-        }
+    z-index: 0; /* 🔥 corregido */
+    pointer-events: none;
+}
 
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-            display: block;
-            transition: 0.3s;
-            box-shadow: 0 0 15px rgba(0,0,0,0.6);
-        }
+.imgSection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
 
-        .card:hover img {
-            transform: scale(1.05);
-        }
+.card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
 
-        .texto {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            opacity: 0;
-            transition: 0.3s;
-            border-radius: 10px;
-        }
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    transition: 0.3s;
+}
 
-        .card:hover .texto {
-            opacity: 1;
-        }
+.card:hover img {
+    transform: scale(1.05);
+}
 
-        .blanco { color: white; }
+.texto {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.6);
+    padding: 10px;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 10px;
+}
 
-        /* ⭐ LIKE */
-        .like {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 22px;
-            cursor: pointer;
-            user-select: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+.card:hover .texto {
+    opacity: 1;
+}
 
-        .like span {
-            font-size: 18px;
-            color: gold;
-            font-weight: bold;
-        }
+.blanco { color: white; }
 
-        /* ✨ EXPLOSIÓN */
-        .sparkle {
-            position: absolute;
-            font-size: 18px;
-            animation: explode 0.6s ease-out forwards;
-            pointer-events: none;
-        }
+.like {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    gap: 6px;
+}
 
-        @keyframes explode {
-            0% { opacity: 1; transform: translate(0,0) scale(1); }
-            100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(1.5); }
-        }
+.like span {
+    color: gold;
+}
 
-        /* 📱 RESPONSIVE */
-        @media (max-width: 768px) {
-            .imgSection {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-                padding: 15px;
-            }
+.sparkle {
+    position: absolute;
+    animation: explode 0.6s ease-out forwards;
+}
 
-            .card {
-                height: auto !important;
-                aspect-ratio: 1 / 1;
-                padding: 8px;
-            }
-
-            .texto {
-                font-size: 14px;
-                padding: 8px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .imgSection {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+@keyframes explode {
+    0% {opacity:1;}
+    100% {opacity:0; transform: translate(var(--x), var(--y));}
+}
+</style>
 </head>
 
 <body>
 
 <div class="imgSection">
 
-    <div class="card" style="height: 400px;">
-        <img src="imagenes/palmera.jpg">
-        <div class="texto blanco">Under the shadow</div>
-        <div class="like" onclick="like(this,'img1')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/palmera.jpg" style="height:400px; object-fit:contain;">
+<div class="texto blanco">Palm at noon</div>
+<div class="like" data-id="img1" onclick="like(this,'img1')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 400px;">
-        <img src="imagenes/hombreplanta.jpg">
-        <div class="texto blanco">Little man</div>
-        <div class="like" onclick="like(this,'img2')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/hombreplanta.jpg" style="height:400px; object-fit:cover;">
+<div class="texto blanco">Little man</div>
+<div class="like" data-id="img2" onclick="like(this,'img2')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 400px;">
-        <img src="imagenes/cafe.jpg">
-        <div class="texto blanco">cafe</div>
-        <div class="like" onclick="like(this,'img3')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/cafe.jpg" style="height:400px; object-fit:cover;">
+<div class="texto blanco">Lounging</div>
+<div class="like" data-id="img3" onclick="like(this,'img3')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 400px;">
-        <img src="imagenes/gatoreal.jpg">
-        <div class="texto blanco">Luckier cat</div>
-        <div class="like" onclick="like(this,'img4')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/gatoreal.jpg" style="height:400px; object-fit:cover;">
+<div class="texto blanco">Luckier cat</div>
+<div class="like" data-id="img4" onclick="like(this,'img4')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 350px;">
-        <img src="imagenes/laguna.jpg">
-        <div class="texto blanco">Lake view</div>
-        <div class="like" onclick="like(this,'img5')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/laguna.jpg" style="height:350px; object-fit:cover;">
+<div class="texto blanco">Lake view</div>
+<div class="like" data-id="img5" onclick="like(this,'img5')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 350px;">
-        <img src="imagenes/flor.jpg">
-        <div class="texto blanco">Ivory flower</div>
-        <div class="like" onclick="like(this,'img6')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/flor.jpg" style="height:350px; object-fit:cover;">
+<div class="texto blanco">Ivory flower</div>
+<div class="like" data-id="img6" onclick="like(this,'img6')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 350px;">
-        <img src="imagenes/osa.jpg">
-        <div class="texto blanco">Osa :3</div>
-        <div class="like" onclick="like(this,'img7')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/osa.jpg" style="height:350px; object-fit:cover;">
+<div class="texto blanco">Osa :3</div>
+<div class="like" data-id="img7" onclick="like(this,'img7')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 350px;">
-        <img src="imagenes/gato.jpg">
-        <div class="texto blanco">Lucky cat</div>
-        <div class="like" onclick="like(this,'img8')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/gato.jpg" style="height:350px; object-fit:cover;">
+<div class="texto blanco">Lucky cat</div>
+<div class="like" data-id="img8" onclick="like(this,'img8')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 350px;">
-        <img src="imagenes/tortuga.jpg">
-        <div class="texto blanco">Turtle</div>
-        <div class="like" onclick="like(this,'img9')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/tortuga.jpg" style="height:350px; object-fit:cover;">
+<div class="texto blanco">Turtle</div>
+<div class="like" data-id="img9" onclick="like(this,'img9')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 350px;">
-        <img src="imagenes/bola.png">
-        <div class="texto blanco">Bola feliz</div>
-        <div class="like" onclick="like(this,'img10')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/bola.png" style="height:350px; object-fit:cover;">
+<div class="texto blanco">Ball, joyous in this nature</div>
+<div class="like" data-id="img10" onclick="like(this,'img10')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 350px;">
-        <img src="imagenes/playa.jpg">
-        <div class="texto blanco">Very orange sun</div>
-        <div class="like" onclick="like(this,'img11')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/playa.jpg" style="height:350px; object-fit:cover;">
+<div class="texto blanco">Very orange sun</div>
+<div class="like" data-id="img11" onclick="like(this,'img11')"><span>0</span>⭐</div>
+</div>
 
-    <div class="card" style="height: 350px;">
-        <img src="imagenes/pajaro.JPG">
-        <div class="texto blanco">Common pigeon</div>
-        <div class="like" onclick="like(this,'img12')"><span>0</span>⭐</div>
-    </div>
+<div class="card">
+<img src="imagenes/pajaro.JPG" style="height:350px; object-fit:cover;">
+<div class="texto blanco">Common pigeon</div>
+<div class="like" data-id="img12" onclick="like(this,'img12')"><span>0</span>⭐</div>
+</div>
 
 </div>
 
 <marquee>Thank you for visiting :3</marquee>
 
-<!-- 🔥 FIREBASE -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } 
@@ -268,8 +232,10 @@ window.like = async function(el, id) {
 };
 
 async function loadLikes() {
-    document.querySelectorAll(".like").forEach(async (el, i) => {
-        let id = "img" + (i + 1);
+    document.querySelectorAll(".like").forEach(async (el) => {
+
+        let id = el.getAttribute("data-id");
+
         const ref = doc(db, "likes", id);
         const snap = await getDoc(ref);
 
