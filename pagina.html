@@ -33,7 +33,6 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-
             max-width: 1200px; 
             margin: 40px auto;
             padding: 20px;
@@ -42,9 +41,10 @@
         .card {
             position: relative;
             width: 100%;
+            max-width: 100%;
             border-radius: 20px;
             overflow: hidden;
-            padding: 10px; /* borde visible */
+            padding: 10px;
         }
 
         .card img {
@@ -79,8 +79,40 @@
 
         .blanco { color: white; }
 
-        @media (max-width: 768px) {
+        /* ⭐ LIKE */
+        .like {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 22px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
+        .like span {
+            font-size: 18px;
+            color: gold;
+            font-weight: bold;
+        }
+
+        /* ✨ EXPLOSIÓN */
+        .sparkle {
+            position: absolute;
+            font-size: 18px;
+            animation: explode 0.6s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes explode {
+            0% { opacity: 1; transform: translate(0,0) scale(1); }
+            100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(1.5); }
+        }
+
+        /* 📱 RESPONSIVE */
+        @media (max-width: 768px) {
             .imgSection {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
@@ -89,7 +121,7 @@
 
             .card {
                 height: auto !important;
-                aspect-ratio: 1 / 1;     
+                aspect-ratio: 1 / 1;
                 padding: 8px;
             }
 
@@ -99,39 +131,128 @@
             }
         }
 
-        /* 📱 MUY PEQUEÑO */
         @media (max-width: 480px) {
-
             .imgSection {
                 grid-template-columns: 1fr;
             }
-
         }
     </style>
 </head>
 
 <body>
 
-    <div class="imgSection">
+<div class="imgSection">
 
-        <div class="card" style="height: 400px;"><img src="imagenes/palmera.jpg"><div class="texto blanco">playa</div></div>
-        <div class="card" style="height: 400px;"><img src="imagenes/hombreplanta.jpg"><div class="texto blanco">Deco</div></div>
-        <div class="card" style="height: 400px;"><img src="imagenes/cafe.jpg"><div class="texto blanco">cafe</div></div>
-        <div class="card" style="height: 400px;"><img src="imagenes/gatoreal.jpg"><div class="texto blanco">gato de la suerte</div></div>
-
-        <div class="card" style="height: 350px;"><img src="imagenes/laguna.jpg"><div class="texto blanco">Masaya</div></div>
-        <div class="card" style="height: 350px;"><img src="imagenes/flor.jpg"><div class="texto blanco">lugar</div></div>
-        <div class="card" style="height: 350px;"><img src="imagenes/osa.jpg"><div class="texto blanco">Osa :3</div></div>
-        <div class="card" style="height: 350px;"><img src="imagenes/gato.jpg"><div class="texto blanco">Gato</div></div>
-
-        <div class="card" style="height: 350px;"><img src="imagenes/tortuga.jpg"><div class="texto blanco">tortuga</div></div>
-        <div class="card" style="height: 350px;"><img src="imagenes/bola.png"><div class="texto blanco">Bola feliz</div></div>
-        <div class="card" style="height: 350px;"><img src="imagenes/playa.jpg"><div class="texto blanco">Playa</div></div>
-        <div class="card" style="height: 350px;"><img src="imagenes/pajaro.JPG"><div class="texto blanco">Pájaro</div></div>
-
+    <div class="card" style="height: 400px;">
+        <img src="imagenes/palmera.jpg">
+        <div class="texto blanco">Under the shadow</div>
+        <div class="like" onclick="like(this,'img1')"><span>0</span>⭐</div>
     </div>
 
-    <marquee>Thank you for visiting :3</marquee>
+    <div class="card" style="height: 400px;">
+        <img src="imagenes/hombreplanta.jpg">
+        <div class="texto blanco">Little man</div>
+        <div class="like" onclick="like(this,'img2')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 400px;">
+        <img src="imagenes/cafe.jpg">
+        <div class="texto blanco">cafe</div>
+        <div class="like" onclick="like(this,'img3')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 400px;">
+        <img src="imagenes/gatoreal.jpg">
+        <div class="texto blanco">Luckier cat</div>
+        <div class="like" onclick="like(this,'img4')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 350px;">
+        <img src="imagenes/laguna.jpg">
+        <div class="texto blanco">Lake view</div>
+        <div class="like" onclick="like(this,'img5')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 350px;">
+        <img src="imagenes/flor.jpg">
+        <div class="texto blanco">Ivory flower</div>
+        <div class="like" onclick="like(this,'img6')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 350px;">
+        <img src="imagenes/osa.jpg">
+        <div class="texto blanco">Osa :3</div>
+        <div class="like" onclick="like(this,'img7')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 350px;">
+        <img src="imagenes/gato.jpg">
+        <div class="texto blanco">Lucky cat</div>
+        <div class="like" onclick="like(this,'img8')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 350px;">
+        <img src="imagenes/tortuga.jpg">
+        <div class="texto blanco">Turtle</div>
+        <div class="like" onclick="like(this,'img9')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 350px;">
+        <img src="imagenes/bola.png">
+        <div class="texto blanco">Bola feliz</div>
+        <div class="like" onclick="like(this,'img10')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 350px;">
+        <img src="imagenes/playa.jpg">
+        <div class="texto blanco">Very orange sun</div>
+        <div class="like" onclick="like(this,'img11')"><span>0</span>⭐</div>
+    </div>
+
+    <div class="card" style="height: 350px;">
+        <img src="imagenes/pajaro.JPG">
+        <div class="texto blanco">Common pigeon</div>
+        <div class="like" onclick="like(this,'img12')"><span>0</span>⭐</div>
+    </div>
+
+</div>
+
+<marquee>Thank you for visiting :3</marquee>
+
+<script>
+function like(el, id) {
+    if (localStorage.getItem(id)) return;
+
+    let count = localStorage.getItem(id + "_count") || 0;
+    count++;
+
+    localStorage.setItem(id, true);
+    localStorage.setItem(id + "_count", count);
+
+    el.querySelector("span").textContent = count;
+
+    for (let i = 0; i < 6; i++) {
+        let sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.textContent = "✨";
+
+        sparkle.style.left = "0px";
+        sparkle.style.top = "0px";
+
+        sparkle.style.setProperty("--x", (Math.random()*60-30) + "px");
+        sparkle.style.setProperty("--y", (Math.random()*-60) + "px");
+
+        el.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 600);
+    }
+}
+
+document.querySelectorAll(".like").forEach((el, i) => {
+    let id = "img" + (i + 1);
+    let count = localStorage.getItem(id + "_count") || 0;
+    el.querySelector("span").textContent = count;
+});
+</script>
 
 </body>
 </html>
