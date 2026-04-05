@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taco</title>
+    <link rel="icon" href="imagenes/icono.jpeg">
+
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+            color: black;
+
+            background-image: url("imagenes/fondo.png");
+            background-size: contain;
+            background-position: center;
+            background-repeat: repeat;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+
+        /* 🔥 GALERÍA CENTRADA */
+        .imgSection {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+
+            max-width: 1200px; /* 👈 no ocupa toda la pantalla */
+            margin: 40px auto; /* 👈 centrado */
+            padding: 20px;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 10px; /* borde visible */
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .texto {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            opacity: 0;
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+
+        .card:hover .texto {
+            opacity: 1;
+        }
+
+        .blanco { color: white; }
+    </style>
+</head>
+
+<body>
+
+    <div class="imgSection">
+
+        <div class="card" style="height: 400px;"><img src="imagenes/palmera.jpg"><div class="texto blanco">Alguna playa</div></div>
+        <div class="card" style="height: 400px;"><img src="imagenes/hombreplanta.jpg"><div class="texto blanco">Decoracion de la universidad</div></div>
+        <div class="card" style="height: 400px;"><img src="imagenes/cafe.jpg"><div class="texto blanco">Masaya mia</div></div>
+        <div class="card" style="height: 400px;"><img src="imagenes/gatoreal.jpg"><div class="texto blanco">gato de la suerte</div></div>
+
+        <div class="card" style="height: 350px;"><img src="imagenes/laguna.jpg"><div class="texto blanco">Masaya</div></div>
+        <div class="card" style="height: 350px;"><img src="imagenes/flor.jpg"><div class="texto blanco">En algun lugar</div></div>
+        <div class="card" style="height: 350px;"><img src="imagenes/osa.jpg"><div class="texto blanco">Osa :3</div></div>
+        <div class="card" style="height: 350px;"><img src="imagenes/gato.jpg"><div class="texto blanco">Gato de la playa</div></div>
+
+        <div class="card" style="height: 350px;"><img src="imagenes/tortuga.jpg"><div class="texto blanco">Una de mis mascotas</div></div>
+        <div class="card" style="height: 350px;"><img src="imagenes/bola.png"><div class="texto blanco">Bola feliz</div></div>
+        <div class="card" style="height: 350px;"><img src="imagenes/playa.jpg"><div class="texto blanco">Playa</div></div>
+        <div class="card" style="height: 350px;"><img src="imagenes/pajaro.JPG"><div class="texto blanco">Pájaro</div></div>
+
+    </div>
+
+    <marquee>Thank you for visiting :3</marquee>
+
+</body>
+</html>

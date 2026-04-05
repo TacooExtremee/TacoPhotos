@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taco</title>
+    <link rel="icon" href="imagenes/icono.jpeg">
+
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            background-image: url("imagenes/fondo.png");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            font-family: 'UnifrakturCook', cursive;
+            color: black;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin: 0;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        /* 🔥 CONTENEDOR */
+        .link-img {
+            margin-top: 30px;
+            text-decoration: none;
+
+            display: flex;
+            flex-direction: column; /* 👈 CLAVE */
+            align-items: center;
+        }
+
+        .link-img img {
+            width: 200px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .link-img img:hover {
+            transform: scale(1.1);
+        }
+
+        /* 🔥 BOTÓN TEXTO */
+        .gallery-text {
+            font-size: 25px;
+            color: white;
+
+            background: purple;
+            padding: 10px 25px;
+            border-radius: 20px;
+
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+
+            margin-top: 10px;
+
+            transition: 0.2s;
+        }
+
+        .gallery-text:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.7);
+        }
+
+        .gallery-text:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome to my website</h1>
+    <p>I just enjoy taking photos, I hope you like them :3</p>
+
+    <a href="pagina.html" class="link-img">
+        <img src="imagenes/icono.jpeg" alt="Gallery">
+        <p class="gallery-text">Gallery [ ◉¯]</p>
+    </a>
+
+</body>
+</html>
