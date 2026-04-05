@@ -219,25 +219,45 @@
 
 <marquee>Thank you for visiting :3</marquee>
 
-<script>
-function like(el, id) {
+<!-- 🔥 FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBic8lUwzsAjJ0z7ifJ-3qflFHhXQyEp0c",
+    authDomain: "tacogallery.firebaseapp.com",
+    projectId: "tacogallery",
+    storageBucket: "tacogallery.appspot.com",
+    messagingSenderId: "779769141358",
+    appId: "1:779769141358:web:350946023b6226f42d0804"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.like = async function(el, id) {
+
     if (localStorage.getItem(id)) return;
 
-    let count = localStorage.getItem(id + "_count") || 0;
-    count++;
+    const ref = doc(db, "likes", id);
+    const snap = await getDoc(ref);
+
+    if (!snap.exists()) {
+        await setDoc(ref, { count: 1 });
+    } else {
+        await updateDoc(ref, { count: increment(1) });
+    }
 
     localStorage.setItem(id, true);
-    localStorage.setItem(id + "_count", count);
 
-    el.querySelector("span").textContent = count;
+    loadLikes();
 
     for (let i = 0; i < 6; i++) {
         let sparkle = document.createElement("div");
         sparkle.className = "sparkle";
         sparkle.textContent = "✨";
-
-        sparkle.style.left = "0px";
-        sparkle.style.top = "0px";
 
         sparkle.style.setProperty("--x", (Math.random()*60-30) + "px");
         sparkle.style.setProperty("--y", (Math.random()*-60) + "px");
@@ -245,13 +265,24 @@ function like(el, id) {
         el.appendChild(sparkle);
         setTimeout(() => sparkle.remove(), 600);
     }
+};
+
+async function loadLikes() {
+    document.querySelectorAll(".like").forEach(async (el, i) => {
+        let id = "img" + (i + 1);
+        const ref = doc(db, "likes", id);
+        const snap = await getDoc(ref);
+
+        let count = 0;
+        if (snap.exists()) {
+            count = snap.data().count;
+        }
+
+        el.querySelector("span").textContent = count;
+    });
 }
 
-document.querySelectorAll(".like").forEach((el, i) => {
-    let id = "img" + (i + 1);
-    let count = localStorage.getItem(id + "_count") || 0;
-    el.querySelector("span").textContent = count;
-});
+loadLikes();
 </script>
 
 </body>
