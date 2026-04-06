@@ -1,100 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taco</title>
-    <link rel="icon" href="imagenes/icono.jpeg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taco</title>
+<link rel="icon" href="imagenes/icono.jpeg">
 
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-            background-image: url("imagenes/fondo.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+    background: url("imagenes/inicio\ 2.png") no-repeat center/cover;
+}
 
-            font-family: 'UnifrakturCook', cursive;
-            color: black;
-            text-align: center;
-        }
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.1);
+}
 
-        h1 {
-            font-size: 60px;
-            margin: 0;
-        }
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
 
-        p {
-            font-size: 20px;
-            margin-top: 10px;
-        }
+/* ✨ TAMAÑOS AJUSTADOS A TU IMAGEN */
+h1 {
+    font-size: clamp(32px, 5vw, 70px);
+    margin: 0;
+    text-shadow: 2px 2px 5px black;
+    letter-spacing: 2px;
+}
 
-        .link-img {
-            margin-top: 30px;
-            text-decoration: none;
+p {
+    font-size: clamp(16px, 1.8vw, 26px);
+    margin-top: 20px;
+    text-shadow: 1px 1px 5px black;
+    line-height: 1.5;
+}
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+/* BOTÓN */
+.button {
+    margin-top: 40px;
+}
 
-        .link-img img {
-            width: 200px;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
+.button a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    background: #ddd;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-size: clamp(16px, 1.5vw, 22px);
+    box-shadow: 0 5px 0 #555;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-        .link-img img:hover {
-            transform: scale(1.1);
-        }
+.button a:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+}
 
-        .gallery-text {
-            font-size: 25px;
-            color: white;
+.button a:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+}
 
-            background: purple;
-            padding: 10px 25px;
-            border-radius: 20px;
+/* ESQUINAS */
+.corner {
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    border: 5px solid white;
+}
 
-            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+.top-left {
+    top: 20px;
+    left: 50px;
+    border-right: none;
+    border-bottom: none;
+}
 
-            margin-top: 10px;
+.top-right {
+    top: 20px;
+    right: 50px;
+    border-left: none;
+    border-bottom: none;
+}
 
-            transition: 0.2s;
-        }
+.bottom-left {
+    bottom: 20px;
+    left: 50px;
+    border-right: none;
+    border-top: none;
+}
 
-        .gallery-text:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.7);
-        }
+.bottom-right {
+    bottom: 20px;
+    right: 50px;
+    border-left: none;
+    border-top: none;
+}
 
-        .gallery-text:active {
-            transform: translateY(2px);
-            box-shadow: 0 3px 5px rgba(0,0,0,0.5);
-        }
-    </style>
+/* REC */
+.rec {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.rec-dot {
+    width: 12px;
+    height: 12px;
+    background: red;
+    border-radius: 50%;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* BATERÍA */
+.battery {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 50px;
+    height: 20px;
+    border: 3px solid white;
+    border-radius: 3px;
+}
+
+.battery::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    background: white;
+}
+
+.battery-level {
+    height: 100%;
+    width: 80%;
+    background: white;
+}
+</style>
 </head>
 
 <body>
 
+<div class="overlay"></div>
+
+<div class="corner top-left"></div>
+<div class="corner top-right"></div>
+<div class="corner bottom-left"></div>
+<div class="corner bottom-right"></div>
+
+<div class="rec">
+    <div class="rec-dot"></div>
+    REC
+</div>
+
+<div class="battery">
+    <div class="battery-level"></div>
+</div>
+
+<div class="content">
     <h1>Welcome to my website</h1>
-    <p>I just enjoy taking photos, I hope you like them :3</p>
+    <p>I just enjoy taking photos and I<br>hope you like them :3</p>
 
-    <div class="link-img">
-        <img src="imagenes/icono.jpeg" alt="Gallery">
-
-        <a href="pagina.html" style="text-decoration: none;">
-            <p class="gallery-text">Gallery [ ◉¯]</p>
-        </a>
+    <div class="button">
+        <a href="pagina.html">Gallery [ ◉¯]</a>
     </div>
+</div>
 
 </body>
 </html>
