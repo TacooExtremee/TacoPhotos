@@ -6,94 +6,127 @@
 <title>Taco</title>
 <link rel="icon" href="imagenes/icono.jpeg">
 
-<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
 <style>
+
+:root {
+    --titulo-size: clamp(75px, 5vw, 70px);
+    --texto-size: clamp(30px, 2vw, 26px);
+    --boton-size: 20px;
+}
+
 body {
     margin: 0;
-    height: 100vh;
+    height: 100dvh;
+    font-family: 'Patrick Hand', cursive;
+    color: white;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 
-    background-image: url("imagenes/fondo2.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url("imagenes/Welcome\ to\ my\ website\ \(7\).png") no-repeat center/cover;
+}
 
-    font-family: 'UnifrakturCook', cursive;
-    color: black;
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.0);
+}
+
+.content {
+    position: relative;
+    z-index: 2;
     text-align: center;
+    padding: 20px;
+    max-width: 800px;
 }
 
 h1 {
-    font-size: 60px;
+    font-size: var(--titulo-size);
     margin: 0;
+
+    text-shadow:
+        2px 2px 0 black,
+        -2px 2px 0 black,
+        2px -2px 0 black,
+        -2px -2px 0 black,
+        0 0 8px rgba(255,255,255,0.6);
 }
 
 p {
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: var(--texto-size);
+    margin-top: 20px;
+
+    text-shadow:
+        0 0 6px rgba(255,255,255,0.6),
+        1px 1px 3px black;
 }
 
-.link-img {
-    margin-top: 30px;
-    text-decoration: none;
-
+.buttons {
+    margin-top: 40px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
-.link-img img {
-    width: 200px;
-    border-radius: 20px;
-    transition: 0.3s;
+.buttons a {
+    text-decoration: none;
+    color: black;
+    background: rgba(255,255,255,0.85);
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-size: var(--boton-size);
+
+    backdrop-filter: blur(6px);
+
+    box-shadow:
+        0 5px 0 #444,
+        0 10px 20px rgba(0,0,0,0.4);
+
+    transition: 0.25s;
 }
 
-.link-img img:hover {
-    transform: scale(1.1);
+.buttons a:hover {
+    transform: scale(1.08);
 }
 
-.gallery-text {
-    font-size: 25px;
-    color: white;
-
-    background: purple;
-    padding: 10px 25px;
-    border-radius: 20px;
-
-    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
-
-    margin-top: 10px;
-
-    transition: 0.2s;
+.buttons a:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 0 #444;
 }
 
-.gallery-text:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.7);
-}
+/* 📱 CELULAR */
+@media (max-width: 600px) {
 
-.gallery-text:active {
-    transform: translateY(2px);
-    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .buttons a {
+        width: 85%;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Welcome to my website</h1>
-<p>I just enjoy taking photos, I hope you like them :3</p>
+<div class="overlay"></div>
 
-<div class="link-img">
-    <img src="imagenes/icono.jpeg" alt="Gallery">
+<div class="content">
+    <h1>Welcome to my website</h1>
+    <p>I just enjoy taking photos and I<br>hope you like them :3</p>
 
-    <a href="pagina.html" style="text-decoration: none;">
-        <p class="gallery-text">Gallery [ ◉¯]</p>
-    </a>
+    <div class="buttons">
+        <a href="pagina.html">Gallery [ ◉¯]</a>
+        <a href="amigos.html">Friends (´ ω `)</a>
+    </div>
 </div>
 
 </body>
