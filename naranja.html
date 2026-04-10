@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taco</title>
+<link rel="icon" href="imagenes/icono.jpeg">
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Patrick Hand', cursive;
+    color: white;
+    text-align: center;
+
+    background: url("imagenes/n.png") no-repeat center/cover;
+}
+
+/* OSCURECER */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+    z-index: 0;
+}
+
+/* CONTENIDO */
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 40px 20px;
+}
+
+/* TEXTO */
+h1 {
+    font-size: 32px;
+    max-width: 900px;
+    margin: auto;
+    line-height: 1.5;
+
+    text-shadow: 2px 2px 6px black;
+}
+
+/* IMAGEN */
+.image-box {
+    margin-top: 40px;
+}
+
+.image-box img {
+    width: 80%;
+    max-width: 700px;
+    border-radius: 10px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+/* BOTÓN VOLVER */
+.back-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: black;
+    background: #c1a7f0;
+    font-size: 18px;
+
+    box-shadow: 0 5px 0 #444;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    transform: scale(1.08);
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 0 #444;
+}
+
+/* 📱 CELULAR */
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+
+    .image-box img {
+        width: 95%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+    <h1>
+        This is 1-15, one of my best friends. He's a<br>
+        serious guy, but deep down he's a good person :3
+    </h1>
+
+    <div class="image-box">
+        <img src="imagenes/caras.jpeg" alt="Amigo 1">
+    </div>
+
+    <!-- 🔙 BOTÓN PARA REGRESAR -->
+    <a href="amigis.html" class="back-btn">←</a>
+
+</div>
+
+</body>
+</html>

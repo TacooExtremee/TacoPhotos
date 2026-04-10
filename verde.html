@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taco</title>
+<link rel="icon" href="imagenes/icono.jpeg">
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* 🔥 CONTROL DE TAMAÑOS */
+:root {
+    --top-text-size: 40px;
+    --side-text-size: 35px;
+    --button-text-size: 30px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Patrick Hand', cursive;
+    color: white;
+
+    background: url("imagenes/v.png") no-repeat center/cover;
+}
+
+/* 🔥 OVERLAY (ARREGLADO) */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+    z-index: 0;
+
+    pointer-events: none; /* 🔥 clave */
+}
+
+/* CONTENIDO */
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+}
+
+/* TEXTO PRINCIPAL */
+.top-text {
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+    font-size: var(--top-text-size);
+    line-height: 1.5;
+    text-shadow: 2px 2px 6px black;
+}
+
+/* SECCIÓN */
+.bottom-section {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* IMAGEN */
+.card img {
+    width: 280px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+
+/* BOTÓN */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+
+    font-size: var(--button-text-size);
+    background: #0f6b63;
+
+    box-shadow: 0 6px 0 rgba(0,0,0,0.5);
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+}
+
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 0 rgba(0,0,0,0.5);
+}
+
+/* TEXTO DERECHO */
+.side-text {
+    max-width: 400px;
+    font-size: var(--side-text-size);
+    line-height: 1.5;
+    text-shadow: 2px 2px 6px black;
+}
+
+/* 🔙 BOTÓN REGRESAR (ARREGLADO) */
+.back-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10; /* 🔥 clave */
+
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: black;
+    background: #c1a7f0;
+
+    font-size: 18px;
+
+    box-shadow: 0 5px 0 #444;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    transform: scale(1.08);
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 0 #444;
+}
+
+/* 📱 CELULAR */
+@media (max-width: 700px) {
+
+    :root {
+        --top-text-size: 20px;
+        --side-text-size: 18px;
+        --button-text-size: 16px;
+    }
+
+    .bottom-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card img {
+        width: 90%;
+    }
+
+    .back-btn {
+        bottom: 15px;
+        left: 15px;
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+    <div class="top-text">
+        This is BedTime, another one of my best friends. He's more cheerful and always supports you if you need help ^_^
+    </div>
+
+    <div class="bottom-section">
+
+        <div class="card">
+            <img src="imagenes/cat.gif">
+            <br>
+            <a href="https://bedtime2022.github.io/BedtimeJournal/" class="btn">
+                BedTime ദ്ദി(ᵔᗜᵔ)
+            </a>
+        </div>
+
+        <div class="side-text">
+            He also has a website, you can check it out if you'd like!
+        </div>
+
+    </div>
+
+</div>
+
+<!-- 🔙 BOTÓN -->
+<a href="amigis.html" class="back-btn">←</a>
+
+</body>
+</html>
