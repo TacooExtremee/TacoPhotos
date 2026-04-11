@@ -9,24 +9,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
+
+/* 🎛️ VARIABLE SOLO PARA IMÁGENES */
+:root {
+    --img-size: 270px; /* 🔥 cambia este valor */
+}
+
+/* 🔥 RESET TOTAL */
+* {
     margin: 0;
-    min-height: 100dvh;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 🔥 EVITA SCROLL LATERAL */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* BODY */
+body {
+    min-height: 100vh;
     font-family: 'Patrick Hand', cursive;
 
     background-image: url("imagenes/fondoamigos.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 /* CONTENEDOR */
 .container {
     max-width: 900px;
+    width: 100%;
     margin: 60px auto;
     padding: 40px;
-    border-radius: 20px;
     text-align: center;
 }
 
@@ -42,18 +60,20 @@ h1 {
 .gallery {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
 /* TARJETAS */
 .card {
-    text-align: center;
+    max-width: 100%;
 }
 
 /* IMÁGENES */
 .card img {
-    width: 300px;
+    width: var(--img-size); /* 🔥 tamaño controlable */
+    max-width: 100%;
+    display: block;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.6);
 }
@@ -72,7 +92,6 @@ h1 {
     transition: 0.2s;
 }
 
-/* COLORES */
 .btn.orange {
     background: #d88a4c;
 }
@@ -81,7 +100,6 @@ h1 {
     background: #0f6b63;
 }
 
-/* EFECTOS */
 .btn:hover {
     transform: scale(1.08);
 }
@@ -91,7 +109,7 @@ h1 {
     box-shadow: 0 3px 0 rgba(0,0,0,0.5);
 }
 
-/* 🔙 BOTÓN FIJO ABAJO IZQUIERDA */
+/* BOTÓN VOLVER */
 .back-btn {
     position: fixed;
     bottom: 20px;
@@ -121,8 +139,8 @@ h1 {
 /* 📱 CELULAR */
 @media (max-width: 600px) {
 
-    body {
-        background-attachment: scroll;
+    :root {
+        --img-size: 100%; /* 🔥 se adapta en celular */
     }
 
     .container {
@@ -134,8 +152,8 @@ h1 {
         font-size: 20px;
     }
 
-    .card img {
-        width: 100%;
+    .gallery {
+        gap: 20px;
     }
 
     .back-btn {
@@ -145,6 +163,7 @@ h1 {
         padding: 10px 18px;
     }
 }
+
 </style>
 </head>
 
@@ -158,19 +177,15 @@ h1 {
 
     <div class="gallery">
 
-        <!-- AMIGO 1 -->
         <div class="card">
             <img src="imagenes/pez.gif">
-            <br>
             <a href="naranja.html" class="btn orange">
                 fishmarket (^ω^)
             </a>
         </div>
 
-        <!-- AMIGO 2 -->
         <div class="card">
             <img src="imagenes/cat.gif">
-            <br>
             <a href="verde.html" class="btn green">
                 BedTime ₍(^o^)₎
             </a>
@@ -180,7 +195,6 @@ h1 {
 
 </div>
 
-<!-- 🔙 BOTÓN VOLVER -->
 <a href="index.html" class="back-btn">←</a>
 
 </body>
