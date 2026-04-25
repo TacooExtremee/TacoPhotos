@@ -10,10 +10,9 @@
 
 <style>
 
-/* 🎛️ CONTROL DE TAMAÑO DE IMAGEN */
 :root {
-    --img-width: 80%;      /* 🔥 ancho de la imagen */
-    --img-max: 650px;      /* 🔥 tamaño máximo */
+    --img-width: 80%; 
+    --img-max: 650px; 
 }
 
 body {
@@ -35,14 +34,12 @@ body {
     z-index: 0;
 }
 
-/* CONTENIDO */
 .container {
     position: relative;
     z-index: 1;
     padding: 40px 20px;
 }
 
-/* TEXTO */
 h1 {
     font-size: 32px;
     max-width: 900px;
@@ -51,19 +48,17 @@ h1 {
     text-shadow: 2px 2px 6px black;
 }
 
-/* IMAGEN */
 .image-box {
     margin-top: 40px;
 }
 
 .image-box img {
-    width: var(--img-width);   /* 🔥 controlable */
-    max-width: var(--img-max); /* 🔥 controlable */
+    width: var(--img-width); 
+    max-width: var(--img-max);
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.7);
 }
 
-/* BOTÓN VOLVER */
 .back-btn {
     display: inline-block;
     margin-top: 40px;
@@ -87,11 +82,10 @@ h1 {
     box-shadow: 0 3px 0 #444;
 }
 
-/* 📱 CELULAR */
 @media (max-width: 600px) {
 
     :root {
-        --img-width: 95%;   /* 🔥 más grande en móvil */
+        --img-width: 95%;
         --img-max: 100%;
     }
 
